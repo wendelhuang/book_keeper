@@ -1,0 +1,7 @@
+rails g controller welcome index
+
+rails g model user name:string munged:string login:string password:string age:integer sex:boolean email:string mobile:string
+rails g controller users index new create update show
+
+rails g model account_record user_id:integer amounts:decimal incoming_or_outgoing:boolean record_type:integer occur_date:date description:text
+rails g controller account_records index new create update show

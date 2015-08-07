@@ -1,0 +1,35 @@
+<%= form_for(@account_record) do |f| %>
+  <% if @account_record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account_record.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @account_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :amounts %><br>
+    <%= f.text_field :amounts %>
+  </div>
+  <div class="field">
+    <%= f.radio_button :incoming_or_outgoing, 'incoming', :checked => true %>
+    <%= f.label :incoming_or_outgoing, 'Incoming', :value => 'Incoming' %>
+    <%= f.radio_button :incoming_or_outgoing, 'outgoing' %>
+	<%= f.label :incoming_or_outgoing, 'Outgoing', :value => 'Outgoing' %>
+  </div>
+  <div class="field">
+    <%= f.label :record_type %><br>
+    <%= f.text_field :record_type %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

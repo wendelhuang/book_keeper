@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  amounts: 9.99
+  incoming_or_outgoing: false
+  record_type: 1
+  occur_date: 2015-08-07
+  description: MyText
+
+two:
+  user_id: 1
+  amounts: 9.99
+  incoming_or_outgoing: false
+  record_type: 1
+  occur_date: 2015-08-07
+  description: MyText
