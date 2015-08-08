@@ -3,3 +3,5 @@
 
 /Gemfile.lock
 /tmp/*
+
+/db/schema.rb
