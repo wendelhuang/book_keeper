@@ -9,6 +9,7 @@ class AccountRecordsController < ApplicationController
   end
 
   def create
+    redirect_to account_records_path
   end
 
   def update
