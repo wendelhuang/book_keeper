@@ -17,9 +17,9 @@
   </div>
   <div class="field">
     <%= f.radio_button :incoming_or_outgoing, 'incoming', :checked => true %>
-    <%= f.label :incoming_or_outgoing, 'Incoming', :value => 'Incoming' %>
+    <%= f.label :incoming_or_outgoing, I18n.t(:incoming), :value => 'incoming' %>
     <%= f.radio_button :incoming_or_outgoing, 'outgoing' %>
-	<%= f.label :incoming_or_outgoing, 'Outgoing', :value => 'Outgoing' %>
+	<%= f.label :incoming_or_outgoing, I18n.t(:outgoing), :value => 'outgoing' %>
   </div>
   <div class="field">
     <%= f.label :record_type %><br>
