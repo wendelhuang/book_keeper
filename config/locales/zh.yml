@@ -22,7 +22,9 @@
 zh:
   hello: "Hello world"
   label_book_keeper: "简明记账"
-  
+  label_aggregate: "汇总"
+  label_incoming: "收入"
+  label_outgoing: "支出"
   incoming: "收入"
   outgoing: "支出"
   helpers:
