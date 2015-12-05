@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= I18n.t(:label_book_keeper) %></title>
+  <title><%= t(:label_book_keeper) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,12 @@
   <%= yield :header_tags %>
 </head>
 <body>
+  <h1><%= t(:label_book_keeper) %></h1>
+  <div id="navigate">
+    <ul id="nav">
+      <%= link_to t(:label_account_record_index), account_records_path %>
+    </ul>
+  </div>
 
 <%= yield %>
 

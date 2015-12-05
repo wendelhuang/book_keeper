@@ -1,4 +1,3 @@
-<h1><%= t(:label_book_keeper) %></h1>
 <p>
   <div id="tabs">
     <ul>
@@ -8,9 +7,9 @@
     </ul>
     <div id="tabs_container">
       <div id="aggregate">
-        汇总<%= aggregate(@account_records) %>
+        <%= aggregate(@account_records) %>
         <% if !@account_records.nil? %>
-          <table>
+          <table class="list">
             <% @account_records.each do |account_record| -%>
               <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
             <% end %>
@@ -18,9 +17,9 @@
         <% end %>
       </div>
       <div id="outgoing">
-        支出<%= aggregate(@outgoing_records) %>
+        <%= aggregate(@outgoing_records) %>
         <% if !@outgoing_records.nil? %>
-          <table>
+          <table class="list">
             <% @outgoing_records.each do |account_record| -%>
               <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
             <% end %>
@@ -28,9 +27,9 @@
         <% end %>
       </div>
       <div id="incoming">
-        收入<%= aggregate(@incoming_records) %>
+        <%= aggregate(@incoming_records) %>
         <% if !@incoming_records.nil? %>
-          <table>
+          <table class="list">
             <% @incoming_records.each do |account_record| -%>
               <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
             <% end %>
