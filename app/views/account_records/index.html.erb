@@ -1,12 +1,8 @@
 <p>
-  <div id="tabs">
-    <ul>
-      <li><a href="#aggregate"><%= t(:label_aggregate) %></a></li>
-      <li><a href="#outgoing"><%= t(:label_outgoing) %></a></li>
-      <li><a href="#incoming"><%= t(:label_incoming) %></a></li>
-    </ul>
-    <div id="tabs_container">
-      <div id="aggregate">
+  <div class="tabbable">
+  <div class="tab-content">
+    <div class="tabs-pane active" id='account_records'>
+      <div class="tab-pane" id="aggregate">
         <%= aggregate(@account_records) %>
         <% if !@account_records.nil? %>
           <table class="list">
@@ -16,7 +12,7 @@
           </table>
         <% end %>
       </div>
-      <div id="outgoing">
+      <div class="tab-pane" id="outgoing">
         <%= aggregate(@outgoing_records) %>
         <% if !@outgoing_records.nil? %>
           <table class="list">
@@ -26,7 +22,7 @@
           </table>
         <% end %>
       </div>
-      <div id="incoming">
+      <div class="tab-pane" id="incoming">
         <%= aggregate(@incoming_records) %>
         <% if !@incoming_records.nil? %>
           <table class="list">
@@ -38,14 +34,5 @@
       </div>
     </div>
   </div>
+  </div>
 </p>
-
-<% content_for :header_tags do %>
-  <%= javascript_include_tag "tabulous.js/demo/src/tabulous.js" %>
-  <%= stylesheet_link_tag "tabulous.js/demo/src/tabulous.css" %>
-  <script type='text/javascript'>
-    $(function () {
-      $('#tabs').tabulous({ effect: 'scale' });
-    });
-  </script>
-<% end %>

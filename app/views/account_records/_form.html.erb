@@ -1,35 +1,63 @@
-<%= form_for(@account_record) do |f| %>
-  <% if @account_record.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@account_record.errors.count, "error") %> prohibited this user from being saved:</h2>
+<div class="row">
+  <%= form_for(@account_record, :html => {:class => "form-horizontal", :role => "form"}) do |f| %>
+    <% if @account_record.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account_record.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-      <% @account_record.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @account_record.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <div class="col-sm-3">
+      </div>
+      <%= f.label :amounts, :class => "control-label col-sm-1" %>
+      <div class="col-sm-5">
+        <%= f.text_field :amounts, :class => "form-control", :placeholder => '金额' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-4">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :incoming_or_outgoing, :class => "control-label checkbox-inline" do %>
+          <%= f.radio_button :incoming_or_outgoing, 1, :checked => true, :class => "form-control" %><%= I18n.t(:incoming) %>
+        <% end %>
+      </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-2">
+        <%= f.label :incoming_or_outgoing, :class => "control-label checkbox-inline" do %>
+          <%= f.radio_button :incoming_or_outgoing, -1, :class => "form-control" %><%= I18n.t(:outgoing) %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-3">
+      </div>
+      <%= f.label :record_type, :class => "control-label col-sm-1" %><br>
+      <div class="col-sm-5">
+        <%= f.text_field :record_type, :class => "form-control", :placeholder => '类型' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-3">
+      </div>
+      <%= f.label :description, :class => "control-label col-sm-1" %><br>
+      <div class="col-sm-5">
+        <%= f.text_area :description, :class => "form-control", :placeholder => "备注" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-8">
+      </div>
+      <div class="col-sm-1">
+        <%= f.submit :class => "btn btn-default" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :amounts %><br>
-    <%= f.text_field :amounts %>
-  </div>
-  <div class="field">
-    <%= f.radio_button :incoming_or_outgoing, 1, :checked => true %>
-    <%= f.label :incoming_or_outgoing, I18n.t(:incoming), :value => 'incoming' %>
-    <%= f.radio_button :incoming_or_outgoing, -1 %>
-    <%= f.label :incoming_or_outgoing, I18n.t(:outgoing), :value => 'outgoing' %>
-  </div>
-  <div class="field">
-    <%= f.label :record_type %><br>
-    <%= f.text_field :record_type %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

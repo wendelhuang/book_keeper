@@ -40,3 +40,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'quiet_assets', git: 'git@github.com:AgilionApps/quiet_assets.git', tag: 'v0.1.0', group: :development
+
+gem 'twitter-bootstrap-rails'
+gem 'less-rails'
