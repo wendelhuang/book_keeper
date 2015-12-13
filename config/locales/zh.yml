@@ -40,3 +40,12 @@ zh:
         record_type: "类型"
         description: "描述"
   label_account_record_index: "流水"
+  activerecord:
+    errors:
+      models:
+        account_record:
+          attributes:
+            amounts:
+              blank: '不能为空'
+            record_type:
+              blank: '不能为空'

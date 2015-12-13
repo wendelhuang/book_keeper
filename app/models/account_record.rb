@@ -4,6 +4,6 @@ class AccountRecord < ActiveRecord::Base
     v.validates_numericality_of :amounts
   end
 
-  scope :incomings => lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = 1") }
-  scope :outgoings => lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = -1") }
+  scope :incomings, lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = 1") }
+  scope :outgoings, lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = -1") }
 end
