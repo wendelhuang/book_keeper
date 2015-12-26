@@ -1,15 +1,18 @@
 <nav class="navbar navbar-default" role="navigation">
-  <div class="navbar-header">
-    <a class="navbar-brand" href="#"><%= t(:label_book_keeper) %></a>
+<div class="navbar-header">
+    <%= link_to root_path, :class => "navbar-brand" do %>
+      <%= t(:label_book_keeper) %>
+    <% end %>
   </div>
   <div>
     <ul class="nav navbar-nav">
       <li class="dropdown">
-        <%= link_to new_account_record_path, :class => "dropdown-toggler", :data => {:toggle => "dropdown"} do %>
+        <%= link_to "#", :class => "dropdown-toggler", :data => {:toggle => "dropdown", :target => "#"} do %>
           记账
-          <b class="caret"></b>
+          <span class="caret"></span>
         <% end %>
         <ul class="dropdown-menu">
+          <li><%= link_to '记一笔', new_account_record_path %></li>
           <li><%= link_to '流水', account_records_path %></li>
         </ul>
       </li>

@@ -31,7 +31,7 @@ class AccountRecordsController < ApplicationController
 
   private
   def account_record_params
-    params.require(:account_record).permit(:amounts, :incoming_or_outgoing, :record_type, :description)
+    params.require(:account_record).permit(:amounts, :occur_date, :incoming_or_outgoing, :record_type, :description)
   end
   def set_time
     @time = Time.new

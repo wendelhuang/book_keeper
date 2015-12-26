@@ -15,3 +15,8 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+// Add datatimepicker @2015-12-16
+//= require moment
+//= require moment/zh-cn
+//= require bootstrap-datetimepicker

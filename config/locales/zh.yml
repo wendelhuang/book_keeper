@@ -33,6 +33,7 @@ zh:
       update: "更新"
     label:
       account_record:
+        occur_date: "日期"
         amounts: "金额"
         incoming_or_outcoming:
           incoming: "收入啊"

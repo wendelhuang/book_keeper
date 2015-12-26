@@ -43,3 +43,6 @@ gem 'quiet_assets', git: 'git@github.com:AgilionApps/quiet_assets.git', tag: 'v0
 
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
+
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
