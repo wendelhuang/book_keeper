@@ -1,0 +1,15 @@
+<% if !account_records.nil? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= aggregate(account_records) %></th>
+        <th>合计</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% account_records.each do |account_record| -%>
+      <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
+    <% end %>
+    </tbody>
+  </table>
+<% end %>

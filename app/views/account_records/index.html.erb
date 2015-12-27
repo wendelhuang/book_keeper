@@ -1,40 +1,18 @@
 <p>
-  <ul class="nav nab-tabls">
+  <ul id="listTab" class="nav nav-tabs">
+    <li class="active"><a href="#aggregateTab" data-toggle="tab">全部</a></li>
+    <li><a href="#outgoingTab" data-toggle="tab">支出</a></li>
+    <li><a href="#incomingTab" data-toggle="tab">收入</a></li>
   </ul>
-  <div class="tabbable">
-  <div class="tab-content">
-    <div class="tabs-pane active" id='account_records'>
-      <div class="tab-pane" id="aggregate">
-        <%= aggregate(@account_records) %>
-        <% if !@account_records.nil? %>
-          <table class="list">
-            <% @account_records.each do |account_record| -%>
-              <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
-            <% end %>
-          </table>
-        <% end %>
-      </div>
-      <div class="tab-pane" id="outgoing">
-        <%= aggregate(@outgoing_records) %>
-        <% if !@outgoing_records.nil? %>
-          <table class="list">
-            <% @outgoing_records.each do |account_record| -%>
-              <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
-            <% end %>
-          </table>
-        <% end %>
-      </div>
-      <div class="tab-pane" id="incoming">
-        <%= aggregate(@incoming_records) %>
-        <% if !@incoming_records.nil? %>
-          <table class="list">
-            <% @incoming_records.each do |account_record| -%>
-              <%= render :partial => 'entry', :locals => {:entry => account_record} %>  
-            <% end %>
-          </table>
-        <% end %>
-      </div>
+  <div id="listTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="aggregateTab">
+      <%= render :partial => 'detail_list', :locals => {:account_records => @account_records} %>  
     </div>
-  </div>
+    <div class="tab-pane fade" id="outgoingTab">
+      <%= render :partial => 'detail_list', :locals => {:account_records => @outgoing_records} %>  
+    </div>
+    <div class="tab-pane fade" id="incomingTab">
+      <%= render :partial => 'detail_list', :locals => {:account_records => @incoming_records} %>  
+    </div>
   </div>
 </p>
