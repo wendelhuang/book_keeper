@@ -1,6 +1,7 @@
 class AccountRecordsController < ApplicationController
 
   before_filter :set_time, :only => [:new, :create]
+  before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
 
   def index
     @account_records = AccountRecord.all
@@ -23,10 +24,21 @@ class AccountRecordsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    if @account_record.update(account_record_params)
+      redirect_to @account_record, :notice => 'AccountRecord update successfully'
+    else
+      render :edit
+    end
   end
 
   def show
+  end
+
+  def destroy
   end
 
   private
@@ -35,5 +47,8 @@ class AccountRecordsController < ApplicationController
   end
   def set_time
     @time = Time.new
+  end
+  def set_account_record
+    @account_record = AccountRecord.find(params[:id])
   end
 end

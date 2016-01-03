@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 zh:
+  date:
+    formats:
+      default: "%Y-%m-%d"
   hello: "Hello world"
   label_book_keeper: "简明记账"
   label_aggregate: "汇总"

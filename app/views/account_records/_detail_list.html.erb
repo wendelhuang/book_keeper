@@ -1,9 +1,10 @@
 <% if !account_records.nil? %>
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th><%= aggregate(account_records) %></th>
         <th>合计</th>
+        <th></th>
+        <th><%= aggregate(account_records) %></th>
       </tr>
     </thead>
     <tbody>
