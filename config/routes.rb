@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :record_types
+
   get 'welcome/index'
   root 'welcome#index'
   
