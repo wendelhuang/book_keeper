@@ -40,12 +40,12 @@
     <div class="form-group">
       <div class="col-sm-2 col-sm-offset-4">
         <%= f.label :incoming_or_outgoing, :class => "control-label checkbox-inline" do %>
-          <%= f.radio_button :incoming_or_outgoing, -1, :class => "form-control" %><%= I18n.t(:outgoing) %>
+          <%= f.radio_button :incoming_or_outgoing, -1, :checked => true, :class => "form-control" %><%= I18n.t(:outgoing) %>
         <% end %>
       </div>
       <div class="col-sm-2 col-sm-offset-1">
         <%= f.label :incoming_or_outgoing, :class => "control-label checkbox-inline" do %>
-          <%= f.radio_button :incoming_or_outgoing, 1, :checked => true, :class => "form-control" %><%= I18n.t(:incoming) %>
+          <%= f.radio_button :incoming_or_outgoing, 1, :class => "form-control" %><%= I18n.t(:incoming) %>
         <% end %>
       </div>
     </div>
