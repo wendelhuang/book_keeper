@@ -4,6 +4,10 @@ class AccountRecord < ActiveRecord::Base
     v.validates_numericality_of :amounts
   end
 
-  scope :incomings, lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = 1") }
-  scope :outgoings, lambda { where("#{AccountRecord.table_name}.incoming_or_outgoing = -1") }
+  scope :incomings, lambda { where(:incoming_or_outgoing => 1) }
+  scope :outgoings, lambda { where(:incoming_or_outgoing => -1) }
+  
+  scope :day, lambda { |time| where(:occur_date => time.strftime("%Y-%m-%d"))}
+  
+  scope :sorted, lambda { order("#{table_name}.updated_at DESC")}
 end

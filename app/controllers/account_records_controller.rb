@@ -4,11 +4,11 @@ class AccountRecordsController < ApplicationController
   before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
 
   def index
-    @account_records = AccountRecord.all
+    @account_records = AccountRecord.all.day(params['time'] ||= @time).sorted
     #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
     #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
-    @incoming_records = AccountRecord.incomings
-    @outgoing_records = AccountRecord.outgoings
+    @incoming_records = AccountRecord.incomings.day(params['time'] ||= @time).sorted
+    @outgoing_records = AccountRecord.outgoings.day(params['time'] ||= @time).sorted
   end
 
   def new
