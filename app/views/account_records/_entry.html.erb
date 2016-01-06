@@ -3,4 +3,5 @@
   <td><%= l entry.occur_date %></td>
   <td><%= number_to_currency entry.amounts*entry.incoming_or_outgoing %></td>
   <td><%= link_to '编辑', edit_account_record_path(entry) %></td>
+  <td><%= link_to '删除', entry, :method => :delete, :data => {:confirm => '确定?'} %></td>
 </tr>

@@ -1,6 +1,6 @@
 class AccountRecordsController < ApplicationController
 
-  before_filter :set_time, :only => [:new, :create]
+  before_filter :set_time, :only => [:new, :create, :index]
   before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
 
   def index
@@ -39,6 +39,8 @@ class AccountRecordsController < ApplicationController
   end
 
   def destroy
+    @account_record.destroy
+    redirect_to account_records_url, :notice => "删除成功"
   end
 
   private
