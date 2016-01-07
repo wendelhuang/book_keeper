@@ -36,3 +36,4 @@
 1.增加account_record的删除功能
 2.初次使用notice
 3.将工作记录放入github
+4.account_record按天展示，并按updated_at排序
