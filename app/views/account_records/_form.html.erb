@@ -55,7 +55,9 @@
         <div class="input-group">
           <%= f.text_field :record_type, :class => "form-control", :placeholder => '类型' %>
           <span class="input-group-addon">
-            <span class="glyphicon glyphicon-plus"></span>
+            <%= link_to new_record_type_path do%>
+              <span class="glyphicon glyphicon-plus"></span>
+            <% end %>
           </span>
         </div>
       </div>
