@@ -39,3 +39,5 @@
 4. account_record按天展示，并按updated_at排序
  
 # 20160114
+1. 使用devise gem来处理用户注册、登录等
+2. [使用bootstrap展示flash message](https://coderwall.com/p/jzofog/ruby-on-rails-flash-messages-with-bootstrap)

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :record_types
 
   get 'welcome/index'

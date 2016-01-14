@@ -2,6 +2,7 @@ class AccountRecordsController < ApplicationController
 
   before_filter :set_time, :only => [:new, :create, :index]
   before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
+  before_filter :authenticate_user!
 
   def index
     @account_records = AccountRecord.all.day(params['time'] ||= @time).sorted

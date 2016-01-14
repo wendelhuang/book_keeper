@@ -1,5 +1,6 @@
 class RecordTypesController < ApplicationController
   before_action :set_record_type, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /record_types
   # GET /record_types.json
