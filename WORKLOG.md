@@ -41,3 +41,6 @@
 # 20160114
 1. 使用devise gem来处理用户注册、登录等
 2. [使用bootstrap展示flash message](https://coderwall.com/p/jzofog/ruby-on-rails-flash-messages-with-bootstrap)
+
+# 20160203
+1. 纠正checkbox和radio button的bootstrap样式使用错误
