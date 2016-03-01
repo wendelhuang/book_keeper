@@ -44,3 +44,9 @@
 
 # 20160203
 1. 纠正checkbox和radio button的bootstrap样式使用错误
+
+# 20160302
+1. 使用belongs_to和has_many将account_record和user关联，并修改相应controller
+2. 优化devise创建用户界面
+
+
