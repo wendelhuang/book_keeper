@@ -5,11 +5,11 @@ class AccountRecordsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @account_records = AccountRecord.all.day(params['time'] ||= @time).sorted
+    @account_records = current_user.account_records.day(params['time'] ||= @time).sorted
     #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
     #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
-    @incoming_records = AccountRecord.incomings.day(params['time'] ||= @time).sorted
-    @outgoing_records = AccountRecord.outgoings.day(params['time'] ||= @time).sorted
+    @incoming_records = current_user.account_records.incomings.day(params['time'] ||= @time).sorted
+    @outgoing_records = current_user.account_records.outgoings.day(params['time'] ||= @time).sorted
   end
 
   def new
@@ -18,6 +18,8 @@ class AccountRecordsController < ApplicationController
 
   def create
     @account_record = AccountRecord.new(account_record_params)
+    @account_record.user_id = current_user.id
+    puts "#{current_user}---------------#{@account_record.user_id}"
     if @account_record.save
       redirect_to account_records_path
     else

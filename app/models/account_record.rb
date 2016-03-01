@@ -1,4 +1,6 @@
 class AccountRecord < ActiveRecord::Base
+  belongs_to :user
+
   validates_presence_of :record_type, :amounts
   with_options :allow_blank => true do |v|
     v.validates_numericality_of :amounts
