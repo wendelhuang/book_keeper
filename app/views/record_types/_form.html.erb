@@ -1,25 +1,33 @@
-<%= form_for(@record_type) do |f| %>
-  <% if @record_type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@record_type.errors.count, "error") %> prohibited this record_type from being saved:</h2>
+<div class="row">
+  <%= form_for(@record_type, :html => {:class => "form-horizontal", :role => "form", :multipart => true}) do |f| %>
+    <% if @record_type.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@record_type.errors.count, "error") %> prohibited this record_type from being saved:</h2>
 
-      <ul>
-      <% @record_type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @record_type.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :title, :class => "control-label col-sm-1 col-sm-offset-3" %>
+      <div class="col-sm-5">
+        <%= f.text_field :title, :class => "form-control", :placeholder => '名称', :required => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, :class => "control-label col-sm-1 col-sm-offset-3" %>
+      <div class="col-sm-5">
+        <%= f.file_field :image, :class => "form-control", :placeholder => '文件名', :required => true %>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-1 col-sm-offset-8">
+        <%= f.submit :class => "btn btn-default" %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.file_field :image %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
