@@ -49,4 +49,6 @@
 1. 使用belongs_to和has_many将account_record和user关联，并修改相应controller
 2. 优化devise创建用户界面
 
-
+# 20160309
+1. 修改record_type的form界面为bootstrap样式
+2. 加入paperclip来进行图片上传
