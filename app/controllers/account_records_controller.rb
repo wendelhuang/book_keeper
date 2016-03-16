@@ -19,7 +19,7 @@ class AccountRecordsController < ApplicationController
   def create
     @account_record = AccountRecord.new(account_record_params)
     @account_record.user_id = current_user.id
-    puts "#{current_user}---------------#{@account_record.user_id}"
+    
     if @account_record.save
       redirect_to account_records_path
     else
