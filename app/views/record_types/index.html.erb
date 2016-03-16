@@ -13,7 +13,7 @@
     <% @record_types.each do |record_type| %>
       <tr>
         <td><%= record_type.title %></td>
-        <td><%= record_type.image %></td>
+        <td><%= image_tag record_type.image.url(:thumb) %></td>
         <td><%= link_to 'Show', record_type %></td>
         <td><%= link_to 'Edit', edit_record_type_path(record_type) %></td>
         <td><%= link_to 'Destroy', record_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

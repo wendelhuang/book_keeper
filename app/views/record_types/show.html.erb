@@ -7,7 +7,7 @@
 
 <p>
   <strong>Image:</strong>
-  <%= @record_type.image %>
+  <%= image_tag @record_type.image.url(:thumb) %>
 </p>
 
 <%= link_to 'Edit', edit_record_type_path(@record_type) %> |
