@@ -5,7 +5,7 @@ class RecordTypesController < ApplicationController
   # GET /record_types
   # GET /record_types.json
   def index
-    @record_types = RecordType.all
+    @record_types = current_user.record_types.all.sorted
   end
 
   # GET /record_types/1
@@ -26,7 +26,7 @@ class RecordTypesController < ApplicationController
   # POST /record_types.json
   def create
     @record_type = RecordType.new(record_type_params)
-
+    @record_type.user_id = current_user.id
     respond_to do |format|
       if @record_type.save
         format.html { redirect_to @record_type, notice: 'Record type was successfully created.' }
