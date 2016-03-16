@@ -52,3 +52,9 @@
 # 20160309
 1. 修改record_type的form界面为bootstrap样式
 2. 加入paperclip来进行图片上传
+
+
+# 20160317
+1. 完善record_type，增加和user的一对多关系
+2. 完成paperclip的图片上传及显示
+
