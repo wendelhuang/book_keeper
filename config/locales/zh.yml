@@ -43,6 +43,9 @@ zh:
           outgoing: "支出啊"
         record_type: "类型"
         description: "描述"
+      record_type:
+        title: "标题"
+        image: "图片"
   label_account_record_index: "流水"
   activerecord:
     errors:
