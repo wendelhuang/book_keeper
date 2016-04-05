@@ -14,6 +14,7 @@ class AccountRecordsController < ApplicationController
 
   def new
     @account_record = AccountRecord.new
+    @record_types = current_user.record_types.all.sorted
   end
 
   def create
