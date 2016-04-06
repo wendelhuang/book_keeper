@@ -58,3 +58,6 @@
 1. 完善record_type，增加和user的一对多关系
 2. 完成paperclip的图片上传及显示
 
+# 20160406
+1. account_record新增界面添加默认日期
+2. account_record列表界面增加日期选择
