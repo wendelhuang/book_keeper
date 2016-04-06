@@ -1,15 +1,23 @@
 class AccountRecordsController < ApplicationController
 
-  before_filter :set_time, :only => [:new, :create, :index]
+  #before_filter :set_time, :only => [:index]
   before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
   before_filter :authenticate_user!
 
   def index
-    @account_records = current_user.account_records.day(params['time'] ||= @time).sorted
+    @time = DateTime.now
+    if params['account_records_date']
+      begin
+        @time = DateTime.parse(params['account_records_date'])
+      rescue
+        @time = DateTime.now
+      end
+    end
+    @account_records = current_user.account_records.day(@time).sorted
     #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
     #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
-    @incoming_records = current_user.account_records.incomings.day(params['time'] ||= @time).sorted
-    @outgoing_records = current_user.account_records.outgoings.day(params['time'] ||= @time).sorted
+    @incoming_records = current_user.account_records.incomings.day(@time).sorted
+    @outgoing_records = current_user.account_records.outgoings.day(@time).sorted
   end
 
   def new
@@ -51,7 +59,7 @@ class AccountRecordsController < ApplicationController
     params.require(:account_record).permit(:amounts, :occur_date, :incoming_or_outgoing, :record_type, :description)
   end
   def set_time
-    @time = Time.new
+    @time = DateTime.new
   end
   def set_account_record
     @account_record = AccountRecord.find(params[:id])
