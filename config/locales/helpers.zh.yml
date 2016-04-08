@@ -20,23 +20,26 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 zh:
-  date:
-    formats:
-      default: "%Y-%m-%d"
-  hello: "Hello world"
-  label_book_keeper: "简明记账"
-  label_aggregate: "汇总"
-  label_incoming: "收入"
-  label_outgoing: "支出"
-  incoming: "收入"
-  outgoing: "支出"
-  label_account_record_index: "流水"
-  activerecord:
-    errors:
-      models:
-        account_record:
-          attributes:
-            amounts:
-              blank: '不能为空'
-            record_type:
-              blank: '不能为空'
+  helpers:
+    submit:
+      account_record:
+        create: "创建"
+        update: "更新"
+      user:
+        create: "登录"
+    label:
+      account_record:
+        occur_date: "日期"
+        amounts: "金额"
+        incoming_or_outcoming:
+          incoming: "收入啊"
+          outgoing: "支出啊"
+        record_type: "类型"
+        description: "描述"
+      user:
+        email: "邮箱"
+        password: "密码"
+        remember_me: "记住我"
+      record_type:
+        title: "标题"
+        image: "图片"

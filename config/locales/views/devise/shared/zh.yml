@@ -1,0 +1,7 @@
+zh:
+  log_in: "登录"
+  sign_up: "注册"
+  forgot_password: "忘记密码"
+  didnt_receive_confirmation_instruction: "没有收到确认提示?"
+  didnt_receive_unlock_instruction: "没有收到确认提示?"
+  sign_in_with: "以 %{provider} %{path} 登录"
