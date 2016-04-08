@@ -1,4 +1,4 @@
-# DONE
+#DONE
 
 # TODO
 1. figure out how rails4 load js&css for each controller
@@ -61,3 +61,7 @@
 # 20160406
 1. account_record新增界面添加默认日期
 2. account_record列表界面增加日期选择
+
+# 20160408
+1. nav_bar新增用户登录链接
+2. I18n支持完善
