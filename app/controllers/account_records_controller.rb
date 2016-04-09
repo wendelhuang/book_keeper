@@ -58,7 +58,7 @@ class AccountRecordsController < ApplicationController
     params.require(:account_record).permit(:amounts, :occur_date, :incoming_or_outgoing, :record_type, :description)
   end
   def set_time
-    @time = DateTime.new
+    @time = DateTime.now
   end
   def set_account_record
     @account_record = AccountRecord.find(params[:id])
