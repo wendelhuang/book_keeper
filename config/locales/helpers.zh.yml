@@ -27,6 +27,9 @@ zh:
         update: "更新"
       user:
         create: "登录"
+      record_type:
+        create: "创建"
+        update: "更新"
     label:
       account_record:
         occur_date: "日期"
