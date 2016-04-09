@@ -1,11 +1,10 @@
 class AccountRecordsController < ApplicationController
 
-  #before_filter :set_time, :only => [:index]
+  before_filter :set_time, :only => [:index, :new]
   before_filter :set_account_record, :only => [:edit, :update, :show, :destroy]
   before_filter :authenticate_user!
 
   def index
-    @time = DateTime.now
     if params['account_records_date']
       begin
         @time = DateTime.parse(params['account_records_date'])
