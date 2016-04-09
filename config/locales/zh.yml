@@ -23,6 +23,17 @@ zh:
   date:
     formats:
       default: "%Y-%m-%d"
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: '%u %n'
+        negative_format: '%u -%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: ¥
   hello: "Hello world"
   label_book_keeper: "简明记账"
   label_aggregate: "汇总"
