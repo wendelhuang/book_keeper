@@ -1,5 +1,9 @@
-<h1 class="text-center"><%= t(:new_record_type) %></h1>
 
-<%= render 'form' %>
+<div class="panel panel-default">
+  <%= render :partial => 'shared/panel_heading', :locals => {:title => t(:new_record_type)} %>
+  <div class="panel-body">
+    <%= render 'form' %>
+    <%= link_to t(:record_types), record_types_path %>
+  </div>
+</div>
 
-<%= link_to t(:record_types), record_types_path %>

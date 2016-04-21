@@ -1,3 +1,8 @@
-<h1 class="text-center"><%= "#{@time.year}年#{@time.month}月#{@time.day}日  星期#{@time.wday}" %></h1>
 
-<%= render 'form' %>
+<div class="panel panel-default">
+  <%= render :partial => 'shared/panel_heading', :locals => {:title => '记账'} %>
+  <div class="panel-body">
+    <h1 class="text-center"><%= "#{@time.year}年#{@time.month}月#{@time.day}日  星期#{@time.wday}" %></h1>
+    <%= render 'form' %>
+  </div>
+</div>

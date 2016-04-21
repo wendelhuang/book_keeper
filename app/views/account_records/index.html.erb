@@ -1,43 +1,48 @@
-<div class="row">
-    <%= form_tag account_records_path, :id => "account_records_date_form", :method => 'get' do %>
-      <div class="col-sm-4 col-sm-offset-4">
-        <div class="input-group date" id="datetimepicker">
-          <%= text_field_tag :account_records_date, "#{@time.strftime('%Y-%m-%d')}", :class => "form-control", :placeholder => '日期' %>
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-          </span>
+<div class="panel panel-default">
+  <%= render :partial => 'shared/panel_heading', :locals => {:title => '明细'} %>
+  <div class="panel-body">
+    <div class="row">
+      <%= form_tag account_records_path, :id => "account_records_date_form", :method => 'get' do %>
+        <div class="col-sm-4 col-sm-offset-4">
+          <div class="input-group date" id="datetimepicker">
+            <%= text_field_tag :account_records_date, "#{@time.strftime('%Y-%m-%d')}", :class => "form-control", :placeholder => '日期' %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
         </div>
-      </div>
-      <script type="text/javascript">
-        $(function() {
-          $('#datetimepicker').datetimepicker({
-            format: "YYYY-MM-DD",
-            locale: 'zh-cn'
+        <script type="text/javascript">
+          $(function() {
+            $('#datetimepicker').datetimepicker({
+              format: "YYYY-MM-DD",
+              locale: 'zh-cn'
+            });
+            $('#datetimepicker').on("dp.change", function(e){
+              $('#account_records_date_form').submit();
+            });
           });
-          $('#datetimepicker').on("dp.change", function(e){
-            $('#account_records_date_form').submit();
-          });
-        });
-      </script>
-    <% end %>
-</div>
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <ul id="listTab" class="nav nav-tabs nav-justified">
-      <li class="active"><a href="#aggregateTab" data-toggle="tab">全部</a></li>
-      <li><a href="#outgoingTab" data-toggle="tab">支出</a></li>
-      <li><a href="#incomingTab" data-toggle="tab">收入</a></li>
-    </ul>
-    <div id="listTabContent" class="tab-content">
-      <div class="tab-pane fade in active" id="aggregateTab">
-        <%= render :partial => 'detail_list', :locals => {:account_records => @account_records} %>  
-      </div>
-      <div class="tab-pane fade" id="outgoingTab">
-        <%= render :partial => 'detail_list', :locals => {:account_records => @outgoing_records} %>  
-      </div>
-      <div class="tab-pane fade" id="incomingTab">
-        <%= render :partial => 'detail_list', :locals => {:account_records => @incoming_records} %>  
-      </div>
+        </script>
+      <% end %>
     </div>
-  </p>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <ul id="listTab" class="nav nav-tabs nav-justified">
+          <li class="active"><a href="#aggregateTab" data-toggle="tab">全部</a></li>
+          <li><a href="#outgoingTab" data-toggle="tab">支出</a></li>
+          <li><a href="#incomingTab" data-toggle="tab">收入</a></li>
+        </ul>
+        <div id="listTabContent" class="tab-content">
+          <div class="tab-pane fade in active" id="aggregateTab">
+            <%= render :partial => 'detail_list', :locals => {:account_records => @account_records} %>  
+          </div>
+          <div class="tab-pane fade" id="outgoingTab">
+            <%= render :partial => 'detail_list', :locals => {:account_records => @outgoing_records} %>  
+          </div>
+          <div class="tab-pane fade" id="incomingTab">
+            <%= render :partial => 'detail_list', :locals => {:account_records => @incoming_records} %>  
+          </div>
+        </div>
+      </p>
+    </div>
+  </div>
 </div>
