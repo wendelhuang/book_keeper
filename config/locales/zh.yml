@@ -23,6 +23,7 @@ zh:
   date:
     formats:
       default: "%Y-%m-%d"
+  day_names: [星期日, 星期一, 星期二, 星期三, 星期四, 星期五, 星期六]
   number:
     currency:
       format:

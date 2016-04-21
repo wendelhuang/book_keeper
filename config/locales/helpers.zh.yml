@@ -26,7 +26,8 @@ zh:
         create: "创建"
         update: "更新"
       user:
-        create: "登录"
+        create: "注册"
+        update: "更新"
       record_type:
         create: "创建"
         update: "更新"
@@ -42,6 +43,8 @@ zh:
       user:
         email: "邮箱"
         password: "密码"
+        password_confirmation: "确认密码"
+        current_password: "当前密码"
         remember_me: "记住我"
       record_type:
         title: "标题"

@@ -1,0 +1,5 @@
+zh:
+  leave_blank: "如果不想更新密码,则留空不填"
+  confirm_change: "请输入原密码以确认是您本人操作"
+  minimum_password_length: "至少 %{minimum_password_length} 个字符"
+  personal_center: "个人中心"
