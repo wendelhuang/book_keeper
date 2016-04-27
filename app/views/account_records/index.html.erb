@@ -2,22 +2,44 @@
   <%= render :partial => 'shared/panel_heading', :locals => {:title => '明细'} %>
   <div class="panel-body">
     <div class="row">
-      <%= form_tag account_records_path, :id => "account_records_date_form", :method => 'get' do %>
-        <div class="col-sm-4 col-sm-offset-4">
-          <div class="input-group date" id="datetimepicker">
-            <%= text_field_tag :account_records_date, "#{@time.strftime('%Y-%m-%d')}", :class => "form-control", :placeholder => '日期' %>
-            <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
-            </span>
+      <%= form_tag account_records_path, :id => "account_records_date_form", :method => 'get',
+                                          :class => "form-horizontal", :role => "form" do %>
+        <div class="form-group col-sm-offset-3">
+          <label for="account_records_date_start" class="control-label col-sm-2 col-sm-offset-3">开始日期</label>
+          <div class="col-sm-2">
+            <div class="input-group date" id="datetimepicker-start">
+              <%= text_field_tag :account_records_date_start, "#{@time_start.strftime('%Y-%m-%d')}", :class => "form-control span2" %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="account_records_date_end" class="control-label col-sm-2 col-sm-offset-3">结束日期</label>
+          <div class="col-sm-2">
+            <div class="input-group date" id="datetimepicker-end">
+              <%= text_field_tag :account_records_date_end, "#{@time_end.strftime('%Y-%m-%d')}", :class => "form-control" %>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
           </div>
         </div>
         <script type="text/javascript">
           $(function() {
-            $('#datetimepicker').datetimepicker({
+            $('#datetimepicker-start').datetimepicker({
               format: "YYYY-MM-DD",
               locale: 'zh-cn'
             });
-            $('#datetimepicker').on("dp.change", function(e){
+            $('#datetimepicker-end').datetimepicker({
+              format: "YYYY-MM-DD",
+              locale: 'zh-cn'
+            });
+            $('#datetimepicker-start').on("dp.change", function(e){
+              $('#account_records_date_form').submit();
+            });
+            $('#datetimepicker-end').on("dp.change", function(e){
               $('#account_records_date_form').submit();
             });
           });

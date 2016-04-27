@@ -5,18 +5,28 @@ class AccountRecordsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    if params['account_records_date']
+    if params['account_records_date_start'] or params['account_record_date_end']
       begin
-        @time = DateTime.parse(params['account_records_date'])
+        @time_start = DateTime.parse(params['account_records_date_start'])
       rescue
-        @time = DateTime.now
+        @time_start = DateTime.now
       end
+      begin
+        @time_end = DateTime.parse(params['account_records_date_end'])
+      rescue
+        @time_end = DateTime.now
+      end
+      @account_records = current_user.account_records.date_range(@time_start, @time_end).sorted
+      @incoming_records = current_user.account_records.incomings.date_range(@time_start, @time_end).sorted
+      @outgoing_records = current_user.account_records.outgoings.date_range(@time_start, @time_end).sorted
+    else
+      @account_records = current_user.account_records.date(@time).sorted
+      #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
+      #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
+      @incoming_records = current_user.account_records.incomings.date(@time).sorted
+      @outgoing_records = current_user.account_records.outgoings.date(@time).sorted
+      @time_start, @time_end = @time, @time
     end
-    @account_records = current_user.account_records.day(@time).sorted
-    #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
-    #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
-    @incoming_records = current_user.account_records.incomings.day(@time).sorted
-    @outgoing_records = current_user.account_records.outgoings.day(@time).sorted
   end
 
   def new
