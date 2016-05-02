@@ -54,13 +54,21 @@
       <%= f.label :record_type, :class => "control-label col-sm-1 col-sm-offset-3" %>
       <div class="col-sm-5">
         <div class="input-group">
-          <%= f.text_field :record_type, :class => "form-control", :placeholder => '类型' %>
-          <span class="input-group-addon">
-            <%= link_to new_record_type_path do%>
-              <span class="glyphicon glyphicon-plus"></span>
+            <%= f.hidden_field :record_type, :value => "#{@record_types.blank? ? '' : @record_types.first.id}" %>
+            <% @record_types.each do |record_type| %>
+              <button type="button" class="btn btn-default <%= "active" if record_type.id == @record_types.first.id %>" 
+                name="<%= record_type.id %>" onclick="set_record_type(<%= record_type.id %>, '<%= record_type.title %>')">
+                <%= record_type.title %>
+              </button>
             <% end %>
-          </span>
+            <span class="input-group-addon">
+              <%= link_to new_record_type_path do%>
+                <span class="glyphicon glyphicon-plus"></span>
+              <% end %>
+            </span>
         </div>
+        <%= f.text_field :record_type, :class => "form-control", :placeholder => '类型', :required => true, 
+          :value => "#{@record_types.blank? ? '' : @record_types.first.title}" %>
       </div>
     </div>
     <div class="form-group">
@@ -70,9 +78,16 @@
       </div>
     </div>
     <div class="form-group">
-      <div class="col-sm-2 col-sm-offset-7">
-        <%= f.submit :class => "form-control" %>
+      <div class="col-sm-1 col-sm-offset-8">
+        <%= f.submit :class => "btn btn-default" %>
       </div>
     </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  function set_record_type(id, title){
+    $("input[name='account_record[record_type]'").val(title);
+    $('.btn.btn-default.active').removeClass('active');
+    $("button[name='" + id + "']").addClass('active');
+  }
+</script>
