@@ -1,10 +1,16 @@
 class AccountRecord < ActiveRecord::Base
   belongs_to :user
+  belongs_to :record_type
+  #has_one :record_type
 
-  validates_presence_of :record_type, :amounts
+  validates_presence_of :record_type_id, :amounts
   with_options :allow_blank => true do |v|
     v.validates_numericality_of :amounts
   end
+
+  #scope :join_record_type, lambda { joins(:record_type) }
+  scope :include_record_type, lambda { includes(:record_type) }
+  #scope :join_record_type, lambda { joins('LEFT OUTER JOIN record_types ON account_records.record_type_id = record_types.id') }
 
   scope :incomings, lambda { where(:incoming_or_outgoing => 1) }
   scope :outgoings, lambda { where(:incoming_or_outgoing => -1) }
@@ -16,5 +22,5 @@ class AccountRecord < ActiveRecord::Base
     )
   }
   
-  scope :sorted, lambda { order("#{table_name}.updated_at DESC")}
+  scope :sorted, lambda { order("#{table_name}.occur_date DESC")}
 end
