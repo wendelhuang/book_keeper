@@ -16,26 +16,32 @@ class AccountRecordsController < ApplicationController
       rescue
         @time_end = DateTime.now
       end
-      @account_records = current_user.account_records.date_range(@time_start, @time_end).sorted
-      @incoming_records = current_user.account_records.incomings.date_range(@time_start, @time_end).sorted
-      @outgoing_records = current_user.account_records.outgoings.date_range(@time_start, @time_end).sorted
     else
-      @account_records = current_user.account_records.date(@time).sorted
-      #@incoming_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == 1 }
-      #@outgoing_records = @account_records.select {|account_record| account_record.incoming_or_outgoing == -1 }
-      @incoming_records = current_user.account_records.incomings.date(@time).sorted
-      @outgoing_records = current_user.account_records.outgoings.date(@time).sorted
       @time_start, @time_end = @time, @time
     end
+    @account_records = current_user.account_records.include_record_type.date_range(@time_start, @time_end).sorted
+    @incoming_records = current_user.account_records.include_record_type.incomings.date_range(@time_start, @time_end).sorted
+    @outgoing_records = current_user.account_records.include_record_type.outgoings.date_range(@time_start, @time_end).sorted
   end
 
   def new
     @account_record = AccountRecord.new
+    @record_types = current_user.record_types.all.sorted
+    @record_type = @record_types.first
   end
 
   def create
+    @record_type_id = params['account_record']['record_type']
+    @record_type_title = params['account_record']['record_type_title'].strip
+
     @account_record = AccountRecord.new(account_record_params)
     @account_record.user_id = current_user.id
+    @record_type = RecordType.find(@record_type_id)
+    if @record_type.blank? || @record_type.title != @record_type_title
+      @record_type = RecordType.where(:title => @record_type_title).first
+      @record_type = RecordType.create(@record_type_title, current_user.id) if @record_type.blank?
+    end
+    @account_record.record_type_id = @record_type.id
     
     if @account_record.save
       redirect_to account_records_path
@@ -45,6 +51,8 @@ class AccountRecordsController < ApplicationController
   end
 
   def edit
+    @record_types = current_user.record_types.all.sorted
+    @record_type = RecordType.find(@account_record.record_type)
   end
 
   def update
@@ -65,7 +73,7 @@ class AccountRecordsController < ApplicationController
 
   private
   def account_record_params
-    params.require(:account_record).permit(:amounts, :occur_date, :incoming_or_outgoing, :record_type, :description)
+    params.require(:account_record).permit(:amounts, :occur_date, :incoming_or_outgoing, :description)
   end
   def set_time
     @time = DateTime.now

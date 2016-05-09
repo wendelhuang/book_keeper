@@ -54,9 +54,9 @@
       <%= f.label :record_type, :class => "control-label col-sm-1 col-sm-offset-3" %>
       <div class="col-sm-5">
         <div class="input-group">
-            <%= f.hidden_field :record_type, :value => "#{@record_types.blank? ? '' : @record_types.first.id}" %>
+            <%= f.hidden_field :record_type, :value => "#{@record_type.blank? ? '' : @record_type.id}" %>
             <% @record_types.each do |record_type| %>
-              <button type="button" class="btn btn-default <%= "active" if record_type.id == @record_types.first.id %>" 
+              <button type="button" class="btn btn-default <%= "active" if record_type.id == (@record_type.blank? ? @record_types.first.id : @record_type.id) %>" 
                 name="<%= record_type.id %>" onclick="set_record_type(<%= record_type.id %>, '<%= record_type.title %>')">
                 <%= record_type.title %>
               </button>
@@ -67,8 +67,8 @@
               <% end %>
             </span>
         </div>
-        <%= f.text_field :record_type, :class => "form-control", :placeholder => '类型', :required => true, 
-          :value => "#{@record_types.blank? ? '' : @record_types.first.title}" %>
+        <%= f.text_field :record_type_title, :class => "form-control", :placeholder => '类型', :required => true, 
+          :value => "#{@record_type.blank? ? '' : @record_type.title}" %>
       </div>
     </div>
     <div class="form-group">
@@ -86,7 +86,8 @@
 </div>
 <script type="text/javascript">
   function set_record_type(id, title){
-    $("input[name='account_record[record_type]'").val(title);
+    $("input[name='account_record[record_type]'").val(id);
+    $("input[name='account_record[record_type_title]'").val(title);
     $('.btn.btn-default.active').removeClass('active');
     $("button[name='" + id + "']").addClass('active');
   }

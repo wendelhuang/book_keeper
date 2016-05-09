@@ -15,10 +15,9 @@ class AccountRecord < ActiveRecord::Base
   scope :incomings, lambda { where(:incoming_or_outgoing => 1) }
   scope :outgoings, lambda { where(:incoming_or_outgoing => -1) }
   
-  scope :date, lambda { |time| where(:occur_date => time.strftime("%Y-%m-%d"))}
   scope :date_range, lambda { |time_start, time_end| 
     where(
-      :occur_date => ( time_start.strftime("%Y-%m-%d")..time_end.strftime("%Y-%m-%d") )
+      :occur_date => ( time_start.strftime("%Y-%m-%d")..(time_end + 1.day).strftime("%Y-%m-%d") )
     )
   }
   

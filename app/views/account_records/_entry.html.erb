@@ -1,5 +1,5 @@
 <tr>
-  <td><%= entry.record_type %></td>
+  <td><%= entry.record_type.title %></td>
   <td><%= l entry.occur_date %></td>
   <td><%= number_to_currency entry.amounts*entry.incoming_or_outgoing %></td>
   <td><%= link_to '编辑', edit_account_record_path(entry) %></td>
